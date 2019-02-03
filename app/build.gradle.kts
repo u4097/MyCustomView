@@ -18,24 +18,24 @@ android {
         targetSdkVersion(Android.targetSdkVersion)
 
 
-        versionCode = (AppVersion.majorAppVersion * 10_000)
-                       +AppVersion.minorAppVersion * 1_000
-                         +AppVersion.patchAppVersion * 100
+        versionCode = (AppVersion.majorAppVersion * 10_000) + (AppVersion.minorAppVersion * 1_000) + (AppVersion.patchAppVersion * 100)
 
-        versionName  = "${AppVersion.majorAppVersion}.${AppVersion.minorAppVersion}.${AppVersion.patchAppVersion}"
+        versionName  = "${AppVersion.majorAppVersion}" +
+                       ".${AppVersion.minorAppVersion}" +
+                       ".${AppVersion.patchAppVersion}"
 
 
         applicationVariants.all(object : Action<ApplicationVariant> {
             override fun execute(variant: ApplicationVariant) {
-                println("variant: ${variant}")
+                println("variant: $variant")
                 variant.outputs.all(object : Action<BaseVariantOutput> {
                     override fun execute(output: BaseVariantOutput) {
 
                         val outputImpl = output as BaseVariantOutputImpl
                         val fileName = output.outputFileName
-                            .replace("-release", "-release-v${defaultConfig.versionName}-vc${defaultConfig.versionCode}")
-                            .replace("-debug", "-debug-v${defaultConfig.versionName}-vc${defaultConfig.versionCode}")
-                        println("output file name: ${fileName}")
+                            .replace("-release", "-release-v$versionName-vc$versionCode")
+                            .replace("-debug", "-debug-v$versionName-vc$versionCode")
+                        println("output file name: $fileName")
                         outputImpl.outputFileName = fileName
                     }
                 })
@@ -62,6 +62,11 @@ dependencies {
     implementation("androidx.appcompat:appcompat:${Versions.androidx}")
     implementation("androidx.core:core-ktx:${Versions.ktx}")
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
+    implementation ("androidx.cardview:cardview:1.0.0")
+
+    // material dialog
+    implementation("com.afollestad.material-dialogs:core:2.0.0-rc10")
+
     testImplementation("junit:junit:4.12")
     androidTestImplementation("androidx.test.ext:junit:1.1.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.1.1")
