@@ -5,6 +5,7 @@ gradle
 gradlew.bat
 gradle.properties
 settings.gradle
+settings.gradle.kts
 *.swp
 #build.gradle
 local.properties

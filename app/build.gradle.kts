@@ -64,6 +64,10 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:1.1.3")
     implementation ("androidx.cardview:cardview:1.0.0")
 
+    // material design
+
+    implementation ("com.google.android.material:material:1.1.0-alpha03")
+
     // material dialog
     implementation("com.afollestad.material-dialogs:core:2.0.0-rc10")
 
