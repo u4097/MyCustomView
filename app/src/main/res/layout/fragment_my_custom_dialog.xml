@@ -20,25 +20,24 @@
       android:id="@+id/tabs"
       android:layout_width="match_parent"
       android:layout_height="?android:actionBarSize"
-      app:tabGravity="fill"
-      app:tabMode="fixed"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
       app:layout_behavior="@string/appbar_scrolling_view_behavior"
-      />
 
-    <!--ViewPager-->
-
-    <androidx.viewpager.widget.ViewPager
-      android:id="@+id/viewPager"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/tabs"
-      android:visibility="visible"
-      tools:visibility="visible" />
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:tabGravity="fill"
+      app:tabMode="fixed">
+
+      <com.google.android.material.tabs.TabItem
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+      <com.google.android.material.tabs.TabItem
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    </com.google.android.material.tabs.TabLayout>
 
 
   </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import kotlinx.android.synthetic.main.fragment_my_custom_dialog.*
+import androidx.fragment.app.FragmentStatePagerAdapter
 
 /**
  * Created by Oleg Sitnikov on 2019-02-03
@@ -17,20 +16,19 @@ import kotlinx.android.synthetic.main.fragment_my_custom_dialog.*
 class MyCustomDialogFragment : DialogFragment() {
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
 		return inflater.inflate(R.layout.fragment_my_custom_dialog, container, false)
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-
 	}
 }
 
-class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
-	val mFragmentList = mutableListOf<Fragment>()
-	val mFragmentTitleList = mutableListOf<String>()
+class ViewPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
+
+	private val mFragmentList = mutableListOf<Fragment>()
+	private val mFragmentTitleList = mutableListOf<String>()
 
 
 	override fun getItem(position: Int): Fragment {
@@ -41,8 +39,9 @@ class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 		return mFragmentList.size
 	}
 
-	fun addFragment(fragment: Fragment) {
+	fun addFragment(fragment: Fragment, title: String) {
 		mFragmentList.add(fragment)
+		mFragmentTitleList.add(title)
 	}
 
 	override fun getPageTitle(position: Int): CharSequence? {
